@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, ArrowRight, ShieldCheck, Sparkles, Truck, Clock, Award } from 'lucide-react';
+import { Phone, ArrowRight, Sparkles, Truck, Clock, Award } from 'lucide-react';
 import { WhatsAppIcon, GoogleIcon, GoldStar } from './BrandIcons';
 import { RippleButton } from './RippleButton';
 import { GoldCanvasParticles } from './GoldCanvasParticles';
 import { DubaiLiveStatus } from './DubaiLiveStatus';
-import { AnimateOnView } from './AnimateOnView';
 
 export const Hero = () => {
   // Count-up animation for rating
@@ -19,7 +18,6 @@ export const Hero = () => {
     const updateRating = (now) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // easeOutCubic
       const ease = 1 - Math.pow(1 - progress, 3);
       const current = (start + (end - start) * ease).toFixed(1);
       setRatingCount(current);
@@ -38,7 +36,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-gradient-to-b from-[#0A0A0A] via-[#0E0E0E] to-[#0A0A0A]"
+      className="relative min-h-[85vh] max-h-[960px] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-gradient-to-b from-[#0A0A0A] via-[#0E0E0E] to-[#0A0A0A]"
     >
       {/* Background Gold Shimmer & Ambient Radial Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#D4AF37]/15 via-[#F1D77A]/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
@@ -59,7 +57,10 @@ export const Hero = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Top Badges: Live Dubai Time & Google 5.0 Rating */}
-        <AnimateOnView animation="fade-down" delay={100} className="flex flex-wrap items-center justify-center gap-3 mb-6">
+        <div 
+          className="flex flex-wrap items-center justify-center gap-3 mb-6 animate-hero-fade-down"
+          style={{ animationDelay: '100ms' }}
+        >
           {/* Dubai Live Status Badge */}
           <DubaiLiveStatus variant="badge" />
 
@@ -76,7 +77,7 @@ export const Hero = () => {
                 <span
                   key={i}
                   className="star-pop text-[#D4AF37] inline-block"
-                  style={{ animationDelay: `${300 + i * 120}ms` }}
+                  style={{ animationDelay: `${250 + i * 100}ms` }}
                 >
                   <GoldStar className="w-3.5 h-3.5 fill-[#D4AF37]" />
                 </span>
@@ -88,10 +89,13 @@ export const Hero = () => {
             <span className="text-zinc-400 font-normal">Google Reviews</span>
             <ArrowRight className="w-3 h-3 text-[#D4AF37] group-hover:translate-x-0.5 transition-transform" />
           </a>
-        </AnimateOnView>
+        </div>
 
         {/* Main Headline */}
-        <AnimateOnView animation="fade-up" delay={200}>
+        <div 
+          className="animate-hero-fade-up"
+          style={{ animationDelay: '200ms' }}
+        >
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-4xl mx-auto">
             Premium Laundry &amp;{' '}
             <span className="text-gold-gradient block sm:inline">
@@ -99,10 +103,13 @@ export const Hero = () => {
             </span>{' '}
             in Dubai
           </h1>
-        </AnimateOnView>
+        </div>
 
         {/* Subtext */}
-        <AnimateOnView animation="fade-up" delay={350}>
+        <div 
+          className="animate-hero-fade-up"
+          style={{ animationDelay: '350ms' }}
+        >
           <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 font-light max-w-2xl mx-auto mb-10 tracking-wide">
             <span className="font-medium text-white">Clean.</span>{' '}
             <span className="font-medium text-[#F1D77A]">Fast.</span>{' '}
@@ -111,10 +118,13 @@ export const Hero = () => {
               Free pickup &amp; delivery.
             </span>
           </p>
-        </AnimateOnView>
+        </div>
 
         {/* CTA Buttons */}
-        <AnimateOnView animation="fade-up" delay={500} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-14">
+        <div 
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-14 animate-hero-fade-up"
+          style={{ animationDelay: '500ms' }}
+        >
           {/* Order on WhatsApp (Gold filled with WhatsApp icon) */}
           <RippleButton
             as="a"
@@ -139,52 +149,53 @@ export const Hero = () => {
             <Phone className="w-5 h-5 text-[#D4AF37] group-hover:rotate-12 transition-transform duration-300" />
             <span>Call Now</span>
           </RippleButton>
-        </AnimateOnView>
+        </div>
 
         {/* Key Feature Pillars */}
-        <AnimateOnView animation="fade-up" delay={650}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-zinc-800/80">
-            <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-              <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-                <Truck className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-400">Doorstep</p>
-                <p className="text-sm font-semibold text-white">Free Pickup &amp; Drop</p>
-              </div>
+        <div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-zinc-800/80 animate-hero-fade-up"
+          style={{ animationDelay: '650ms' }}
+        >
+          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
+            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
+              <Truck className="w-5 h-5" />
             </div>
-
-            <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-              <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-                <Sparkles className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-400">Garment Care</p>
-                <p className="text-sm font-semibold text-white">Delicate &amp; Kandura</p>
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-              <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-                <Clock className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-400">Hours</p>
-                <p className="text-sm font-semibold text-white">Daily 8 AM – 12 AM</p>
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-              <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-                <Award className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-400">Satisfaction</p>
-                <p className="text-sm font-semibold text-white">5.0 Star Rated</p>
-              </div>
+            <div>
+              <p className="text-xs text-zinc-400">Doorstep</p>
+              <p className="text-sm font-semibold text-white">Free Pickup &amp; Drop</p>
             </div>
           </div>
-        </AnimateOnView>
+
+          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
+            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xs text-zinc-400">Garment Care</p>
+              <p className="text-sm font-semibold text-white">Delicate &amp; Kandura</p>
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
+            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
+              <Clock className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xs text-zinc-400">Hours</p>
+              <p className="text-sm font-semibold text-white">Daily 8 AM – 12 AM</p>
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
+            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
+              <Award className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xs text-zinc-400">Satisfaction</p>
+              <p className="text-sm font-semibold text-white">5.0 Star Rated</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

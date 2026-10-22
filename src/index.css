@@ -89,6 +89,37 @@
   transform: rotate(30deg) translateX(100%);
 }
 
+/* Hero CSS Entrance Animations */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-fade-up {
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-fade-down {
+  animation: heroFadeDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Animations */
 @keyframes goldPulse {
   0%, 100% {

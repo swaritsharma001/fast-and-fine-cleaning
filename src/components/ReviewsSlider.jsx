@@ -8,6 +8,7 @@ import {
   MessageSquare,
   ShieldCheck,
   Star,
+  Award,
 } from 'lucide-react';
 import { GoogleIcon, GoldStar } from './BrandIcons';
 import { AnimateOnView } from './AnimateOnView';
