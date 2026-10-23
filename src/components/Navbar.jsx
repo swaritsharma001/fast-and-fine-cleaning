@@ -12,7 +12,7 @@ export const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'services', 'why-us', 'reviews', 'hours', 'contact'];
+      const sections = ['home', 'services', 'why-us', 'gallery', 'reviews', 'hours', 'contact'];
       const scrollPos = window.scrollY + 120;
 
       for (const section of sections) {
@@ -36,6 +36,7 @@ export const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
     { name: 'Why Us', href: '#why-us' },
+    { name: 'Gallery', href: '#gallery' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'Working Hours', href: '#hours' },
     { name: 'Location & Contact', href: '#contact' },

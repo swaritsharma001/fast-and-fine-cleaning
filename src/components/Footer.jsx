@@ -11,6 +11,7 @@ export const Footer = () => {
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
     { name: 'Why Us', href: '#why-us' },
+    { name: 'Branch Gallery', href: '#gallery' },
     { name: 'Customer Reviews', href: '#reviews' },
     { name: 'Working Hours', href: '#hours' },
     { name: 'Location & Contact', href: '#contact' },

@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ServicesSlider } from './components/ServicesSlider';
 import { WhyChooseUs } from './components/WhyChooseUs';
+import { BranchGallery } from './components/BranchGallery';
 import { ReviewsSlider } from './components/ReviewsSlider';
 import { WorkingHours } from './components/WorkingHours';
 import { LocationAndContact } from './components/LocationAndContact';
@@ -25,20 +26,23 @@ export function App() {
         {/* 4. Why Choose Us (4 Cards) */}
         <WhyChooseUs />
 
-        {/* 5. Customer Reviews (Cards + Slider + Owner Replies) */}
+        {/* 5. Real Branch Photos Gallery (Aswaq Mall, Al Warqa 3) */}
+        <BranchGallery />
+
+        {/* 6. Customer Reviews (Cards + Slider + Owner Replies + Real Avatars) */}
         <ReviewsSlider />
 
-        {/* 6. Working Hours (Gold Card + Live Dubai GMT+4 Status) */}
+        {/* 7. Working Hours (Gold Card + Live Dubai GMT+4 Status) */}
         <WorkingHours />
 
-        {/* 7. Location & Contact (Google Map + Contact Cards) */}
+        {/* 8. Location & Contact (Google Map + Contact Cards) */}
         <LocationAndContact />
       </main>
 
-      {/* 8. Footer */}
+      {/* 9. Footer */}
       <Footer />
 
-      {/* 9. Floating Buttons (Pulse WhatsApp & Back to Top) */}
+      {/* 10. Floating Buttons (Pulse WhatsApp & Back to Top) */}
       <FloatingActionButtons />
     </div>
   );

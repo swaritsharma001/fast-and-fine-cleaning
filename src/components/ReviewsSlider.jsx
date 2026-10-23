@@ -18,8 +18,10 @@ export const reviewsData = [
     id: 1,
     name: 'Majed Alkamali',
     isLocalGuide: true,
+    metaText: 'Local Guide · 28 reviews · 27 photos',
     timeAgo: '10 months ago',
     rating: 5,
+    avatar: '/avatars/majed.jpg',
     reviewText:
       'Amazing laundry service! Very clean, fast, and professional. My clothes came back smelling fresh and perfect. The quality of washing and ironing is excellent, and the staff are friendly and helpful. Definitely one of the best laundries in the area — highly recommended!',
     ownerReply: 'Appreciate it, Thank you so much 😊',
@@ -29,8 +31,10 @@ export const reviewsData = [
     id: 2,
     name: 'SAM BAYDOUN',
     isLocalGuide: true,
+    metaText: 'Local Guide · 16 reviews · 2 photos',
     timeAgo: '4 months ago',
     rating: 5,
+    avatar: '/avatars/sam.jpg',
     reviewText:
       'Very clean and fast service. Delivery available in Dubai. Highly recommended.',
     ownerReply: 'Thank you so much ☺️',
@@ -40,8 +44,10 @@ export const reviewsData = [
     id: 3,
     name: 'Rahil Shaikh',
     isLocalGuide: false,
+    metaText: '2 reviews on Google',
     timeAgo: 'a year ago',
     rating: 5,
+    avatar: '/avatars/rahil.jpg',
     reviewText:
       'Exceptional service from start to finish! Clothes came back flawlessly clean, fresh, and perfectly handled. Fast, reliable, and truly professional — a rare gem in laundry care.',
     ownerReply: 'Thank you so much sir, I hope you visit again for our service',
@@ -51,8 +57,10 @@ export const reviewsData = [
     id: 4,
     name: 'Hessa Salah',
     isLocalGuide: true,
+    metaText: 'Local Guide · 32 reviews · 15 photos',
     timeAgo: '11 months ago',
     rating: 5,
+    avatar: '/avatars/hessa.jpg',
     reviewText:
       'I used Shamsa Laundry for dry cleaning and was really happy with their service. The clothes came back perfectly clean and fresh. They also offer free pickup and delivery, which made everything so convenient. Highly recommend them!',
     ownerReply: 'Thank you so much ☺️',
@@ -62,8 +70,10 @@ export const reviewsData = [
     id: 5,
     name: 'sam baydoun',
     isLocalGuide: false,
+    metaText: '8 reviews on Google',
     timeAgo: '11 months ago',
     rating: 5,
+    avatar: '/avatars/sam2.jpg',
     reviewText:
       'Excellent laundry service! The clothes always come back clean, fresh, and well-folded. The staff are professional and always deliver on time. Highly recommended!',
     ownerReply: 'Thank you so much, really appreciated 😊',
@@ -73,8 +83,10 @@ export const reviewsData = [
     id: 6,
     name: 'Mohammad Lanjawi',
     isLocalGuide: true,
+    metaText: 'Local Guide · Verified Customer',
     timeAgo: '8 months ago',
     rating: 5,
+    avatar: null,
     reviewText:
       'I had a fully smoked kandura and underwear and Mashallah everything returned back to normal without any damages.',
     ownerReply:
@@ -164,13 +176,13 @@ export const ReviewsSlider = () => {
               Loved by <span className="text-gold-gradient">Dubai Residents</span>
             </h2>
             <div className="flex items-center gap-2 mt-2 text-zinc-300 text-sm">
-              <span className="font-bold text-[#F1D77A] text-lg font-mono">5.0</span>
+              <span className="font-bold text-[#F1D77A] text-lg font-mono">4.9</span>
               <div className="flex items-center gap-0.5">
                 {[...Array(5)].map((_, i) => (
                   <GoldStar key={i} className="w-4 h-4 fill-[#D4AF37]" />
                 ))}
               </div>
-              <span className="text-zinc-400">· 100% Five-Star Customer Feedback</span>
+              <span className="text-zinc-400">· 51 Verified Customer Reviews on Google</span>
             </div>
           </AnimateOnView>
 
@@ -219,10 +231,22 @@ export const ReviewsSlider = () => {
                     {/* Top Reviewer Meta */}
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div className="flex items-center gap-3.5">
-                        {/* Avatar */}
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#242424] to-[#161616] border border-[#D4AF37]/50 flex items-center justify-center font-bold text-sm text-[#F1D77A] shadow-inner">
-                          {review.avatarInitials}
-                        </div>
+                        {/* Avatar with real Google photo or luxury initials fallback */}
+                        {review.avatar ? (
+                          <img
+                            src={review.avatar}
+                            alt={review.name}
+                            className="w-12 h-12 rounded-full object-cover border-2 border-[#D4AF37]/60 shadow-md shadow-[#D4AF37]/15"
+                            loading="lazy"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#242424] to-[#161616] border border-[#D4AF37]/50 flex items-center justify-center font-bold text-sm text-[#F1D77A] shadow-inner">
+                            {review.avatarInitials}
+                          </div>
+                        )}
                         <div>
                           <div className="flex items-center gap-2">
                             <h3 className="font-semibold text-white text-base">
@@ -236,8 +260,11 @@ export const ReviewsSlider = () => {
                                 Local Guide
                               </span>
                             )}
+                            <span className="text-xs text-zinc-400">
+                              {review.metaText || review.timeAgo}
+                            </span>
                             <span className="text-xs text-zinc-500">
-                              {review.timeAgo}
+                              · {review.timeAgo}
                             </span>
                           </div>
                         </div>
@@ -308,7 +335,7 @@ export const ReviewsSlider = () => {
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#141414] hover:bg-[#1A1A1A] border border-[#D4AF37]/50 hover:border-[#F1D77A] text-[#F1D77A] font-semibold text-sm transition-all duration-300 shadow-lg shadow-black/60 hover:shadow-[#D4AF37]/20 group active:scale-95"
           >
             <GoogleIcon className="w-4 h-4" />
-            <span>View all reviews on Google</span>
+            <span>View all 51 reviews on Google</span>
             <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </AnimateOnView>
