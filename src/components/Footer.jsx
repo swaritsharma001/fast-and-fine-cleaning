@@ -1,156 +1,155 @@
-import React from 'react';
-import { Phone, MapPin, Clock, ArrowUp, Sparkles, Heart } from 'lucide-react';
-import { WhatsAppIcon, InstagramIcon, GoogleIcon } from './BrandIcons';
+import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 
-export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+const QUICK_LINKS = [
+  { label: 'Home',           href: '#home' },
+  { label: 'About Us',       href: '#about' },
+  { label: 'Services',       href: '#services' },
+  { label: 'Why Choose Us',  href: '#experience' },
+  { label: 'Contact',        href: '#contact' },
+];
+
+const SERVICES = [
+  'Office Cleaning',
+  'Residential Cleaning',
+  'School Cleaning',
+  'Hospital Cleaning',
+  'Deep Cleaning',
+];
+
+export default function Footer() {
+  const scrollTo = (e, href) => {
+    e.preventDefault();
+    const el = document.getElementById(href.replace('#', ''));
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Branch Gallery', href: '#gallery' },
-    { name: 'Customer Reviews', href: '#reviews' },
-    { name: 'Working Hours', href: '#hours' },
-    { name: 'Location & Contact', href: '#contact' },
-  ];
-
   return (
-    <footer className="bg-[#070707] border-t border-[#D4AF37]/35 relative pt-16 pb-12 overflow-hidden">
-      {/* Top subtle golden light strip */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-3xl h-[1px] bg-gradient-to-r from-transparent via-[#F1D77A] to-transparent shadow-[0_0_15px_#D4AF37]" />
-
+    <footer className="bg-text-dark text-white pt-12 sm:pt-14 pb-24 lg:pb-10 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-zinc-850">
-          {/* Brand Info (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#141414] border border-[#D4AF37]/60 flex items-center justify-center shadow-md">
-                <span className="font-serif text-xl font-bold text-gold-gradient">
-                  S
-                </span>
-              </div>
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-white/10">
+          {/* Brand */}
+          <div className="lg:col-span-1 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <img
+                src="/logo.png"
+                alt="Fast & Fine Logo"
+                width="40"
+                height="40"
+                loading="lazy"
+                decoding="async"
+                className="h-10 w-auto object-contain"
+                onError={(e) => { e.target.style.display = 'none'; }}
+              />
               <div>
-                <h3 className="font-serif text-xl font-bold text-gold-gradient">
-                  Shamsa Laundry
-                </h3>
-                <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">
-                  Dubai Branch
-                </p>
+                <div className="text-base font-extrabold text-green-primary">FAST &amp; FINE</div>
+                <div className="text-xs text-white/60 font-medium">Housemaid Cleaning Services</div>
               </div>
             </div>
-
-            <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Dubai’s premier destination for luxury garment care, delicate fabric dry cleaning, kandura restoration, and free door-to-door laundry pickup.
+            <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
+              Professional housemaid cleaning services in Abu Dhabi, UAE — trusted for over 13 years.
             </p>
-
-            {/* Official Social Icons */}
-            <div className="flex items-center gap-3 pt-2">
-              {/* WhatsApp */}
-              <a
-                href="https://wa.me/971522256627"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#141414] border border-zinc-800 hover:border-[#25D366] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-md group"
-                aria-label="WhatsApp"
-                title="Chat on WhatsApp"
-              >
-                <WhatsAppIcon className="w-5 h-5" />
-              </a>
-
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/shamsa__laundry_dubai_branch/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#141414] border border-zinc-800 hover:border-[#E1306C] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-md group p-1"
-                aria-label="Instagram"
-                title="Follow on Instagram"
-              >
-                <InstagramIcon className="w-6 h-6 rounded-lg" />
-              </a>
-
-              {/* Google Business */}
-              <a
-                href="https://share.google/qmyEvktKcpqezzQ6o"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#141414] border border-zinc-800 hover:border-[#4285F4] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-md group"
-                aria-label="Google Business"
-                title="View on Google"
-              >
-                <GoogleIcon className="w-5 h-5" />
-              </a>
-            </div>
+            <a
+              href="https://wa.me/971528313399"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-primary text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-full hover:bg-green-dark transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.117 1.532 5.845L0 24l6.303-1.504A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 01-5.001-1.372l-.359-.214-3.72.888.916-3.627-.234-.374A9.775 9.775 0 012.182 12C2.182 6.577 6.577 2.182 12 2.182S21.818 6.577 21.818 12 17.423 21.818 12 21.818z"/>
+              </svg>
+              Chat on WhatsApp
+            </a>
           </div>
 
-          {/* Quick Links (3 cols) */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs uppercase tracking-wider text-[#F1D77A] font-semibold mb-4">
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5">
-              {navLinks.map((link) => (
-                <li key={link.name}>
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white/80 mb-3 sm:mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-xs sm:text-sm text-zinc-400 hover:text-[#F1D77A] transition-colors flex items-center gap-1.5"
+                    onClick={(e) => scrollTo(e, link.href)}
+                    className="text-white/60 text-xs sm:text-sm hover:text-green-primary transition-colors"
                   >
-                    <span className="text-zinc-600">›</span>
-                    <span>{link.name}</span>
+                    {link.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact & Hours Quick Digest (4 cols) */}
-          <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-xs uppercase tracking-wider text-[#F1D77A] font-semibold mb-4">
-              Dubai Branch Contact
-            </h4>
-            <div className="space-y-2.5 text-xs sm:text-sm text-zinc-400">
-              <a
-                href="tel:+971522256627"
-                className="flex items-center gap-2.5 hover:text-white transition-colors"
-              >
-                <Phone className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>+971 52 225 6627</span>
-              </a>
+          {/* Services */}
+          <div>
+            <h4 className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white/80 mb-3 sm:mb-4">Services</h4>
+            <ul className="space-y-2">
+              {SERVICES.map((s) => (
+                <li key={s}>
+                  <a
+                    href="#services"
+                    onClick={(e) => scrollTo(e, '#services')}
+                    className="text-white/60 text-xs sm:text-sm hover:text-green-primary transition-colors"
+                  >
+                    {s}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>Open Daily: 8:00 AM – 12:00 AM (Midnight)</span>
-              </div>
-
-              <a
-                href="https://maps.app.goo.gl/Dixry54oc4XYahV86?g_st=ac"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-2.5 hover:text-[#F1D77A] transition-colors"
-              >
-                <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
-                <span>Dubai, United Arab Emirates (Free Pickup &amp; Delivery)</span>
-              </a>
-            </div>
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white/80 mb-3 sm:mb-4">Contact Info</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="tel:+971528313399" className="flex items-start gap-2 text-white/60 text-xs sm:text-sm hover:text-green-primary transition-colors">
+                  <Phone size={15} className="mt-0.5 flex-shrink-0" />
+                  <span>+971 52 831 3399</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:rajeena@fastandfineuae.com" className="flex items-start gap-2 text-white/60 text-xs sm:text-sm hover:text-green-primary transition-colors break-all">
+                  <Mail size={15} className="mt-0.5 flex-shrink-0" />
+                  <span>rajeena@fastandfineuae.com</span>
+                </a>
+              </li>
+              <li className="flex items-start gap-2 text-white/60 text-xs sm:text-sm">
+                <MapPin size={15} className="mt-0.5 flex-shrink-0" />
+                <span>Abu Dhabi, United Arab Emirates</span>
+              </li>
+              <li>
+                <a
+                  href="https://maps.app.goo.gl/f7yy8LMME6euBZa77?g_st=ac"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-green-primary text-xs sm:text-sm hover:underline"
+                >
+                  <ExternalLink size={13} />
+                  <span>View on Google Maps</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://share.google/E1MiZojIG3OOEI7a6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-green-primary text-xs sm:text-sm hover:underline"
+                >
+                  <ExternalLink size={13} />
+                  <span>Google Business Profile</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom copyright line */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <p>© 2026 Shamsa Laundry Dubai Branch. All rights reserved.</p>
-
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-zinc-400 hover:text-[#F1D77A] transition-colors group cursor-pointer"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-1 transition-transform" />
-          </button>
+        {/* Bottom */}
+        <div className="pt-8 text-center text-white/40 text-xs">
+          &copy; {new Date().getFullYear()} Fast &amp; Fine Housemaid Cleaning Services. Abu Dhabi, UAE. All rights reserved.
         </div>
       </div>
     </footer>
   );
-};
+}

@@ -1,6 +1,7 @@
 {
-  "name": "shamsa-laundry-dubai",
+  "name": "fast-and-fine-cleaning-services",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +11,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "canvas-confetti": "^1.9.4",
+    "instagrapi-js": "^1.0.12",
     "lucide-react": "^1.61.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",

@@ -1,249 +1,165 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Clock, MapPin, Sparkles } from 'lucide-react';
-import { WhatsAppIcon } from './BrandIcons';
-import { RippleButton } from './RippleButton';
+import { useState, useEffect } from 'react';
+import { Menu, X, Phone } from 'lucide-react';
 
-export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+const WaIcon = ({ size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.117 1.532 5.845L0 24l6.303-1.504A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 01-5.001-1.372l-.359-.214-3.72.888.916-3.627-.234-.374A9.775 9.775 0 012.182 12C2.182 6.577 6.577 2.182 12 2.182S21.818 6.577 21.818 12 17.423 21.818 12 21.818z"/>
+  </svg>
+);
+
+const NAV_LINKS = [
+  { label: 'Home',           href: '#home' },
+  { label: 'About Us',       href: '#about' },
+  { label: 'Services',       href: '#services' },
+  { label: 'Our Experience', href: '#experience' },
+  { label: 'Why Choose Us',  href: '#experience' },
+  { label: 'Contact',        href: '#contact' },
+];
+
+const WA_LINK = 'https://wa.me/971528313399';
+const PHONE   = 'tel:+971528313399';
+
+export default function Navbar({ activeSection }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled]  = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      const sections = ['home', 'services', 'why-us', 'gallery', 'reviews', 'hours', 'contact'];
-      const scrollPos = window.scrollY + 120;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Reviews', href: '#reviews' },
-    { name: 'Working Hours', href: '#hours' },
-    { name: 'Location & Contact', href: '#contact' },
-  ];
-
-  const handleLinkClick = (href) => {
-    setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    const id = href.replace('#', '');
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 72;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#D4AF37]/25 shadow-2xl shadow-black/80 py-3.5'
-            : 'bg-transparent py-5'
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 w-full ${
+          scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a
-              href="#home"
-              className="group flex items-center gap-3 text-left focus:outline-none"
-            >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1E1E1E] to-[#121212] border border-[#D4AF37]/50 flex items-center justify-center shadow-md shadow-[#D4AF37]/10 group-hover:border-[#F1D77A] group-hover:shadow-[#D4AF37]/30 transition-all duration-300">
-                <span className="font-serif text-xl font-bold text-gold-gradient group-hover:scale-110 transition-transform duration-300">
-                  S
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-lg md:text-xl font-bold tracking-tight text-gold-gradient leading-tight">
-                  Shamsa Laundry
-                </span>
-                <span className="text-[10px] tracking-[0.2em] uppercase font-semibold text-zinc-400 group-hover:text-[#F1D77A] transition-colors">
-                  Dubai Branch
-                </span>
-              </div>
-            </a>
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 w-full">
+          {/* Logo */}
+          <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 min-w-0">
+            <img
+              src="/logo.png"
+              alt="Fast & Fine Logo"
+              width="40"
+              height="40"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="h-8 sm:h-10 w-auto object-contain flex-shrink-0"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+            <div className="flex flex-col leading-tight min-w-0">
+              <span className="font-extrabold text-sm sm:text-base text-green-primary tracking-tight truncate">FAST &amp; FINE</span>
+              <span className="text-[10px] sm:text-[11px] text-text-muted font-medium truncate">Housemaid Cleaning Services</span>
+            </div>
+          </a>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.href.substring(1);
-                return (
+          {/* Desktop Nav Links */}
+          <ul className="hidden lg:flex items-center gap-6">
+            {NAV_LINKS.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-sm font-semibold transition-colors duration-200 hover:text-green-primary ${
+                    activeSection === link.href.replace('#', '')
+                      ? 'text-green-primary'
+                      : 'text-text-dark'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop CTA */}
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:flex items-center gap-2 bg-green-primary text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-green-dark transition-colors shadow-sm"
+          >
+            <WaIcon size={16} />
+            <span>Get a Free Quote</span>
+          </a>
+
+          {/* Mobile Hamburger */}
+          <button
+            className="lg:hidden p-2 rounded-md text-text-dark hover:text-green-primary focus:outline-none flex-shrink-0"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </nav>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg w-full">
+            <ul className="flex flex-col py-2">
+              {NAV_LINKS.map((link) => (
+                <li key={link.label}>
                   <a
-                    key={link.name}
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleLinkClick(link.href);
-                    }}
-                    className={`px-3.5 py-2 text-sm font-medium tracking-wide rounded-full transition-all duration-200 relative ${
-                      isActive
-                        ? 'text-[#F1D77A] bg-[#D4AF37]/10 font-semibold'
-                        : 'text-zinc-300 hover:text-white hover:bg-zinc-900/60'
-                    }`}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="block px-6 py-3 text-sm font-semibold text-text-dark hover:text-green-primary hover:bg-green-light transition-colors"
                   >
-                    {link.name}
-                    {isActive && (
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[#D4AF37]" />
-                    )}
+                    {link.label}
                   </a>
-                );
-              })}
-            </nav>
-
-            {/* Desktop CTA Buttons */}
-            <div className="hidden sm:flex items-center gap-3">
-              <a
-                href="tel:+971522256627"
-                className="hidden xl:inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold text-zinc-300 hover:text-white hover:border-[#D4AF37]/50 border border-zinc-800 transition-colors"
-                title="Call Shamsa Laundry Dubai"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#D4AF37]" />
-                +971 52 225 6627
-              </a>
-
-              <RippleButton
-                as="a"
-                href="https://wa.me/971522256627?text=Hello%20Shamsa%20Laundry%20Dubai%2C%20I%20would%20like%20to%20order%20laundry%20pickup."
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="gold"
-                className="px-5 py-2.5 text-xs md:text-sm font-semibold shadow-md"
-              >
-                {/* Original WhatsApp brand icon */}
-                <WhatsAppIcon className="w-4 h-4 shrink-0" />
-                <span>WhatsApp Us</span>
-              </RippleButton>
-            </div>
-
-            {/* Mobile Menu Hamburger Button */}
-            <div className="flex items-center gap-2 lg:hidden">
-              <a
-                href="https://wa.me/971522256627?text=Hello%20Shamsa%20Laundry%20Dubai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-[#25D366]/15 text-[#25D366] border border-[#25D366]/30 sm:hidden"
-                aria-label="Chat on WhatsApp"
-              >
-                <WhatsAppIcon className="w-5 h-5" />
-              </a>
-
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 focus:outline-none transition-colors"
-                aria-label="Toggle menu"
-              >
-                {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-[#F1D77A]" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
+                </li>
+              ))}
+              <li className="px-6 py-3">
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-green-primary text-white font-bold py-2.5 rounded-full text-sm shadow-sm"
+                >
+                  <WaIcon size={16} />
+                  <span>Get a Free Quote</span>
+                </a>
+              </li>
+            </ul>
           </div>
-        </div>
+        )}
       </header>
 
-      {/* Mobile Drawer Navigation with backdrop blur */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/80 backdrop-blur-md transition-opacity duration-300 lg:hidden ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        <div
-          className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#101010] border-l border-[#D4AF37]/30 p-6 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-out ${
-            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-          onClick={(e) => e.stopPropagation()}
+      {/* Mobile Fixed Bottom Bar */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-gray-200 flex shadow-2xl w-full">
+        <a
+          href={PHONE}
+          className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold text-text-dark hover:bg-gray-50 transition-colors"
         >
-          <div>
-            {/* Drawer Header */}
-            <div className="flex items-center justify-between pb-6 border-b border-zinc-800">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-black border border-[#D4AF37]/60 flex items-center justify-center">
-                  <span className="font-serif text-lg font-bold text-gold-gradient">S</span>
-                </div>
-                <div>
-                  <h3 className="font-serif text-base font-bold text-gold-gradient">
-                    Shamsa Laundry
-                  </h3>
-                  <p className="text-[10px] text-zinc-400 uppercase tracking-widest">
-                    Dubai Branch
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-zinc-400 hover:text-white"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Nav list */}
-            <nav className="mt-6 flex flex-col space-y-1.5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick(link.href);
-                  }}
-                  className="px-4 py-3 rounded-xl text-sm font-medium text-zinc-200 hover:text-[#F1D77A] hover:bg-[#D4AF37]/10 flex items-center justify-between transition-colors"
-                >
-                  <span>{link.name}</span>
-                  <span className="text-zinc-600 text-xs">→</span>
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          {/* Drawer Actions */}
-          <div className="pt-6 border-t border-zinc-800 space-y-3">
-            <a
-              href="https://wa.me/971522256627?text=Hello%20Shamsa%20Laundry%20Dubai%2C%20I%20would%20like%20to%20order%20laundry%20pickup."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl bg-gold-gradient text-black font-semibold text-sm shadow-lg shadow-[#D4AF37]/20 btn-shimmer"
-            >
-              <WhatsAppIcon className="w-5 h-5" />
-              <span>WhatsApp Us Now</span>
-            </a>
-
-            <a
-              href="tel:+971522256627"
-              className="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-zinc-900 border border-[#D4AF37]/40 text-[#F1D77A] font-medium text-sm hover:bg-zinc-800 transition-colors"
-            >
-              <Phone className="w-4 h-4 text-[#D4AF37]" />
-              <span>Call +971 52 225 6627</span>
-            </a>
-
-            <div className="pt-2 text-center text-xs text-zinc-500">
-              Open Daily: 8:00 AM – 12:00 AM
-            </div>
-          </div>
-        </div>
+          <Phone size={18} className="text-green-primary" />
+          <span>Call Us</span>
+        </a>
+        <div className="w-px bg-gray-200" />
+        <a
+          href={WA_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-3 text-sm font-bold bg-green-primary text-white hover:bg-green-dark transition-colors"
+        >
+          <WaIcon size={18} />
+          <span>WhatsApp</span>
+        </a>
       </div>
     </>
   );
-};
+}

@@ -1,202 +1,138 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, ArrowRight, Sparkles, Truck, Clock, Award } from 'lucide-react';
-import { WhatsAppIcon, GoogleIcon, GoldStar } from './BrandIcons';
-import { RippleButton } from './RippleButton';
-import { GoldCanvasParticles } from './GoldCanvasParticles';
-import { DubaiLiveStatus } from './DubaiLiveStatus';
+import useInView from '../hooks/useInView';
 
-export const Hero = () => {
-  // Count-up animation for rating
-  const [ratingCount, setRatingCount] = useState(4.2);
+const WA_LINK = 'https://wa.me/971528313399';
 
-  useEffect(() => {
-    let start = 4.0;
-    const end = 5.0;
-    const duration = 1200;
-    const startTime = performance.now();
+const WaIcon = () => (
+  <svg width={20} height={20} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.117 1.532 5.845L0 24l6.303-1.504A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.794 9.794 0 01-5.001-1.372l-.359-.214-3.72.888.916-3.627-.234-.374A9.775 9.775 0 012.182 12C2.182 6.577 6.577 2.182 12 2.182S21.818 6.577 21.818 12 17.423 21.818 12 21.818z"/>
+  </svg>
+);
 
-    const updateRating = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const current = (start + (end - start) * ease).toFixed(1);
-      setRatingCount(current);
-
-      if (progress < 1) {
-        requestAnimationFrame(updateRating);
-      } else {
-        setRatingCount('5.0');
-      }
-    };
-
-    const frame = requestAnimationFrame(updateRating);
-    return () => cancelAnimationFrame(frame);
-  }, []);
+export default function Hero() {
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section
       id="home"
-      className="relative min-h-[85vh] max-h-[960px] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-gradient-to-b from-[#0A0A0A] via-[#0E0E0E] to-[#0A0A0A]"
+      className="relative w-full overflow-hidden flex items-center bg-gradient-to-br from-white via-green-light/30 to-green-light/60 pt-24 pb-20 lg:pt-28 lg:pb-24 min-h-[90vh]"
     >
-      {/* Background Gold Shimmer & Ambient Radial Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#D4AF37]/15 via-[#F1D77A]/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-20 right-10 w-80 h-80 bg-[#AA820A]/10 rounded-full blur-[90px] pointer-events-none" />
-
-      {/* Floating Gold Particles Canvas */}
-      <GoldCanvasParticles density={50} />
-
-      {/* Subtle luxury geometric grid line overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(#D4AF37 1px, transparent 1px), linear-gradient(90deg, #D4AF37 1px, transparent 1px)`,
-          backgroundSize: '80px 80px',
-        }}
-      />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Top Badges: Live Dubai Time & Google 5.0 Rating */}
-        <div 
-          className="flex flex-wrap items-center justify-center gap-3 mb-6 animate-hero-fade-down"
-          style={{ animationDelay: '100ms' }}
+      <div
+        ref={ref}
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16"
+      >
+        {/* ── LEFT TEXT ── */}
+        <div
+          className="flex-1 space-y-5"
+          style={{
+            transition: 'opacity 0.7s ease, transform 0.7s ease',
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateY(0)' : 'translateY(24px)',
+          }}
         >
-          {/* Dubai Live Status Badge */}
-          <DubaiLiveStatus variant="badge" />
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-green-primary/10 text-green-primary text-xs font-bold px-3.5 py-1.5 rounded-full border border-green-primary/20">
+            <span className="w-2 h-2 rounded-full bg-green-primary animate-pulse inline-block flex-shrink-0" />
+            <span>Abu Dhabi&apos;s Trusted Cleaning Partner</span>
+          </div>
 
-          {/* Google Reviews 5.0 Star Badge */}
-          <a
-            href="https://share.google/qmyEvktKcpqezzQ6o"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#141414] border border-[#D4AF37]/40 hover:border-[#F1D77A] text-xs font-medium text-zinc-200 transition-all duration-300 shadow-md hover:shadow-[#D4AF37]/20 group"
-          >
-            <GoogleIcon className="w-4 h-4 shrink-0" />
-            <div className="flex items-center gap-1">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <span
-                  key={i}
-                  className="star-pop text-[#D4AF37] inline-block"
-                  style={{ animationDelay: `${250 + i * 100}ms` }}
-                >
-                  <GoldStar className="w-3.5 h-3.5 fill-[#D4AF37]" />
-                </span>
-              ))}
-            </div>
-            <span className="font-bold text-[#F1D77A] font-mono tracking-tight text-sm">
-              {ratingCount}
-            </span>
-            <span className="text-zinc-400 font-normal">Google Reviews</span>
-            <ArrowRight className="w-3 h-3 text-[#D4AF37] group-hover:translate-x-0.5 transition-transform" />
-          </a>
-        </div>
-
-        {/* Main Headline */}
-        <div 
-          className="animate-hero-fade-up"
-          style={{ animationDelay: '200ms' }}
-        >
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-4xl mx-auto">
-            Premium Laundry &amp;{' '}
-            <span className="text-gold-gradient block sm:inline">
-              Dry Cleaning
-            </span>{' '}
-            in Dubai
+          {/* Heading */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-text-dark leading-tight tracking-tight">
+            13 Years of{' '}
+            <span className="text-green-primary">Cleaning Excellence</span>
           </h1>
-        </div>
 
-        {/* Subtext */}
-        <div 
-          className="animate-hero-fade-up"
-          style={{ animationDelay: '350ms' }}
-        >
-          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 font-light max-w-2xl mx-auto mb-10 tracking-wide">
-            <span className="font-medium text-white">Clean.</span>{' '}
-            <span className="font-medium text-[#F1D77A]">Fast.</span>{' '}
-            <span className="font-medium text-white">Professional.</span>{' '}
-            <span className="text-zinc-300 block sm:inline">
-              Free pickup &amp; delivery.
-            </span>
+          {/* Subheading */}
+          <p className="text-base sm:text-xl font-semibold text-text-muted">
+            Professional Cleaning. Exceptional Service.
           </p>
+
+          {/* Body */}
+          <p className="text-sm sm:text-base text-text-muted leading-relaxed max-w-lg">
+            Your trusted housemaid cleaning service in Abu Dhabi, UAE. Delivering dependable,
+            professional results for offices, homes, schools, healthcare facilities, and more.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-3 pt-1">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-primary text-white font-bold px-6 py-3 rounded-full hover:bg-green-dark transition-colors shadow-lg text-sm cursor-pointer"
+            >
+              <WaIcon />
+              <span>Get a Free Quote</span>
+            </a>
+            <a
+              href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center gap-2 border-2 border-green-primary text-green-primary font-bold px-6 py-3 rounded-full hover:bg-green-primary hover:text-white transition-colors text-sm cursor-pointer"
+            >
+              View Our Services
+            </a>
+          </div>
+
+          {/* Stat Pills */}
+          <div className="flex flex-wrap gap-2 pt-1">
+            {['13+ Years Experience', '5 Service Categories', 'Client-Focused Care'].map((stat) => (
+              <span
+                key={stat}
+                className="inline-flex items-center gap-2 bg-white border border-green-primary/20 text-text-dark text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full shadow-sm"
+              >
+                <span className="w-2 h-2 rounded-full bg-green-primary flex-shrink-0" />
+                <span>{stat}</span>
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-14 animate-hero-fade-up"
-          style={{ animationDelay: '500ms' }}
+        {/* ── RIGHT IMAGE ── */}
+        <div
+          className="flex-1 relative w-full max-w-lg lg:max-w-none mx-auto"
+          style={{
+            transition: 'opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s',
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateY(0)' : 'translateY(24px)',
+          }}
         >
-          {/* Order on WhatsApp (Gold filled with WhatsApp icon) */}
-          <RippleButton
-            as="a"
-            href="https://wa.me/971522256627?text=Hello%20Shamsa%20Laundry%20Dubai%2C%20I%20would%20like%20to%20place%20a%20laundry%20order%20for%20pickup."
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="gold"
-            className="w-full sm:w-auto px-8 py-4 text-base font-semibold shadow-xl shadow-[#D4AF37]/25 hover:shadow-[#D4AF37]/45 group animate-gold-pulse"
-          >
-            <WhatsAppIcon className="w-5 h-5 shrink-0" />
-            <span>Order on WhatsApp</span>
-            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-          </RippleButton>
-
-          {/* Call Now (Gold outline) */}
-          <RippleButton
-            as="a"
-            href="tel:+971522256627"
-            variant="outline"
-            className="w-full sm:w-auto px-8 py-4 text-base font-medium group"
-          >
-            <Phone className="w-5 h-5 text-[#D4AF37] group-hover:rotate-12 transition-transform duration-300" />
-            <span>Call Now</span>
-          </RippleButton>
-        </div>
-
-        {/* Key Feature Pillars */}
-        <div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto pt-6 border-t border-zinc-800/80 animate-hero-fade-up"
-          style={{ animationDelay: '650ms' }}
-        >
-          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-              <Truck className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs text-zinc-400">Doorstep</p>
-              <p className="text-sm font-semibold text-white">Free Pickup &amp; Drop</p>
+          {/* 13 Years badge */}
+          <div className="absolute top-3 right-3 z-10 bg-white rounded-full p-2.5 shadow-lg border-2 border-green-primary/20">
+            <div className="text-center px-1">
+              <div className="text-xl font-extrabold text-green-primary leading-none">13</div>
+              <div className="text-[10px] text-text-muted font-semibold leading-tight">Years<br/>Exp.</div>
             </div>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs text-zinc-400">Garment Care</p>
-              <p className="text-sm font-semibold text-white">Delicate &amp; Kandura</p>
-            </div>
-          </div>
-
-          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs text-zinc-400">Hours</p>
-              <p className="text-sm font-semibold text-white">Daily 8 AM – 12 AM</p>
-            </div>
-          </div>
-
-          <div className="p-3.5 rounded-xl bg-[#121212]/80 border border-zinc-800/80 flex items-center gap-3 text-left">
-            <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] shrink-0 border border-[#D4AF37]/30">
-              <Award className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs text-zinc-400">Satisfaction</p>
-              <p className="text-sm font-semibold text-white">5.0 Star Rated</p>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-100">
+            <img
+              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+              alt="Professional cleaning service in Abu Dhabi"
+              loading="lazy"
+              className="w-full h-64 sm:h-80 lg:h-[480px] object-cover"
+            />
+            {/* Overlay card */}
+            <div className="absolute bottom-3 left-3 right-3 bg-green-primary/95 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-xl">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-white font-bold text-xs sm:text-sm">Trusted Since 2013</p>
+                  <p className="text-white/80 text-[11px] sm:text-xs mt-0.5 leading-snug">
+                    Over a decade of professional cleaning experience across Abu Dhabi, UAE.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
+}
