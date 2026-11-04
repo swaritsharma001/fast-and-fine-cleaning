@@ -142,7 +142,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-0.5">Location</p>
-                  <p className="font-bold text-text-dark text-sm sm:text-base">Abu Dhabi, United Arab Emirates</p>
+                  <p className="font-bold text-text-dark text-sm sm:text-base">
+                    Office 24, Bin Thani Residence, Al Qusais
+                  </p>
+                  <p className="text-xs sm:text-sm text-text-muted mt-0.5">
+                    Near to Al Twar Center, Dubai, UAE
+                  </p>
                 </div>
               </div>
             </div>

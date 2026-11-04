@@ -22,7 +22,7 @@ export default function About() {
             A Trusted Cleaning Partner
           </h2>
           <p className="text-text-muted mt-3 max-w-xl mx-auto text-sm sm:text-base">
-            Over 13 years of professional cleaning in Abu Dhabi, UAE.
+            Over 13 years of professional cleaning in Dubai &amp; the UAE.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export default function About() {
             className="space-y-4"
           >
             <p className="text-text-muted text-sm sm:text-base leading-relaxed">
-              Fast &amp; Fine Housemaid Cleaning Services has been operating in Abu Dhabi, UAE for over 13 years.
+              Fast &amp; Fine Housemaid Cleaning Services has been operating across Dubai and the UAE for over 13 years.
               Throughout this time, we have developed a practical understanding of what different properties require —
               and how to deliver cleaning services that reflect each client&apos;s expectations.
             </p>
@@ -113,7 +113,7 @@ export default function About() {
                 <h3 className="text-lg font-bold text-text-dark">Our Vision</h3>
               </div>
               <p className="text-text-muted text-sm leading-relaxed">
-                To be the most trusted cleaning service provider in Abu Dhabi — recognised for reliability,
+                To be the most trusted cleaning service provider in the UAE — recognised for reliability,
                 transparency, and a practical, client-focused approach across every environment we serve.
               </p>
             </div>

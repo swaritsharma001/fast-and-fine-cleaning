@@ -1,7 +1,7 @@
 const STATS = [
   { value: '13+', label: 'Years of Experience' },
   { value: '5',   label: 'Cleaning Categories' },
-  { value: '🇦🇪', label: 'Abu Dhabi Based', isEmoji: true },
+  { value: '🇦🇪', label: 'Dubai & UAE Based', isEmoji: true },
   { value: '★',   label: 'Client-Focused Service', isEmoji: true },
 ];
 

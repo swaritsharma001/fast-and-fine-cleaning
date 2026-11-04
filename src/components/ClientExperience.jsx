@@ -3,7 +3,7 @@ import useInView from '../hooks/useInView';
 const TRUST_METRICS = [
   { value: '13', label: 'Years Operating' },
   { value: 'Multi', label: 'Service Types' },
-  { value: 'AUH', label: 'Abu Dhabi Based' },
+  { value: 'DXB', label: 'Dubai & UAE Based' },
   { value: '★', label: 'Client-Focused' },
 ];
 

@@ -117,7 +117,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2 text-white/60 text-xs sm:text-sm">
                 <MapPin size={15} className="mt-0.5 flex-shrink-0" />
-                <span>Abu Dhabi, United Arab Emirates</span>
+                <span>Office 24, Bin Thani Residence, Al Qusais, Near to Al Twar Center, Dubai, UAE</span>
               </li>
               <li>
                 <a
@@ -147,7 +147,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="pt-8 text-center text-white/40 text-xs">
-          &copy; {new Date().getFullYear()} Fast &amp; Fine Housemaid Cleaning Services. Abu Dhabi, UAE. All rights reserved.
+          &copy; {new Date().getFullYear()} Fast &amp; Fine Housemaid Cleaning Services. Dubai &amp; Abu Dhabi, UAE. All rights reserved.
         </div>
       </div>
     </footer>

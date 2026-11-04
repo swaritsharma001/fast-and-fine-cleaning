@@ -33,7 +33,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-green-primary/10 text-green-primary text-xs font-bold px-3.5 py-1.5 rounded-full border border-green-primary/20">
             <span className="w-2 h-2 rounded-full bg-green-primary animate-pulse inline-block flex-shrink-0" />
-            <span>Abu Dhabi&apos;s Trusted Cleaning Partner</span>
+            <span>Dubai &amp; UAE&apos;s Trusted Cleaning Partner</span>
           </div>
 
           {/* Heading */}
@@ -49,7 +49,7 @@ export default function Hero() {
 
           {/* Body */}
           <p className="text-sm sm:text-base text-text-muted leading-relaxed max-w-lg">
-            Your trusted housemaid cleaning service in Abu Dhabi, UAE. Delivering dependable,
+            Your trusted housemaid cleaning service based in Dubai, UAE. Delivering dependable,
             professional results for offices, homes, schools, healthcare facilities, and more.
           </p>
 
@@ -125,7 +125,7 @@ export default function Hero() {
                 <div>
                   <p className="text-white font-bold text-xs sm:text-sm">Trusted Since 2013</p>
                   <p className="text-white/80 text-[11px] sm:text-xs mt-0.5 leading-snug">
-                    Over a decade of professional cleaning experience across Abu Dhabi, UAE.
+                    Over a decade of professional cleaning experience across Dubai and the UAE.
                   </p>
                 </div>
               </div>
