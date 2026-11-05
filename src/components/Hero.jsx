@@ -107,12 +107,19 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-100">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-gray-100">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
-              alt="Professional cleaning service in Abu Dhabi"
-              loading="lazy"
-              className="w-full h-64 sm:h-80 lg:h-[480px] object-cover"
+              src="/hero-image.jpg"
+              alt="Fast & Fine Housemaid Cleaning Services Team on Site"
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              className="w-full h-64 sm:h-80 lg:h-[480px] object-cover object-center"
+              onError={(e) => {
+                if (e.target.src !== 'https://images.mintgram.live/fast%20and%20fine/IMG_20261105_192911.jpg') {
+                  e.target.src = 'https://images.mintgram.live/fast%20and%20fine/IMG_20261105_192911.jpg';
+                }
+              }}
             />
             {/* Overlay card */}
             <div className="absolute bottom-3 left-3 right-3 bg-green-primary/95 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-xl">
