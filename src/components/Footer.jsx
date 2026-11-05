@@ -7,6 +7,7 @@ const QUICK_LINKS = [
   { label: 'Our Gallery',    href: '#gallery' },
   { label: 'Why Choose Us',  href: '#experience' },
   { label: 'Contact',        href: '#contact' },
+  { label: 'Our Clients',    href: '#clients' },
 ];
 
 const SERVICES = [
@@ -48,7 +49,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
-              Professional housemaid cleaning services in Abu Dhabi, UAE — trusted for over 13 years.
+              Professional housemaid cleaning services in Dubai, UAE — trusted for over 13 years.
             </p>
             <a
               href="https://wa.me/971528313399"
@@ -149,7 +150,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-8 text-center text-white/40 text-xs space-y-2">
           <p>
-            &copy; {new Date().getFullYear()} Fast &amp; Fine Housemaid Cleaning Services. Dubai &amp; Abu Dhabi, UAE. All rights reserved.
+            &copy; {new Date().getFullYear()} Fast &amp; Fine Housemaid Cleaning Services. Dubai, UAE. All rights reserved.
           </p>
           <p className="text-white/60 text-xs">
             Made and Managed by{' '}

@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { label: 'Gallery',        href: '#gallery' },
   { label: 'Why Choose Us',  href: '#experience' },
   { label: 'Contact',        href: '#contact' },
+  { label: 'Our Clients',    href: '#clients' },
 ];
 
 const WA_LINK = 'https://wa.me/971528313399';

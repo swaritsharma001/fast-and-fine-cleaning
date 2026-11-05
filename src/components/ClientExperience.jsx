@@ -51,7 +51,7 @@ const REAL_ESTATE_PARTNERS = [
 
 const TRUST_METRICS = [
   { value: '13+', label: 'Years of Experience' },
-  { value: '7+', label: 'Flagship Partners' },
+  { value: '7+', label: 'Featured Clients' },
   { value: 'DXB', label: 'Dubai & UAE Based' },
   { value: '100%', label: 'Client-Focused Care' },
 ];
@@ -60,7 +60,7 @@ export default function ClientExperience() {
   const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
-    <section id="experience" className="py-12 sm:py-16 lg:py-20 bg-white w-full overflow-hidden">
+    <section id="clients" className="py-12 sm:py-16 lg:py-20 bg-white w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
@@ -69,10 +69,10 @@ export default function ClientExperience() {
             <span>Clients &amp; Service Experience</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-dark tracking-tight">
-            Trusted Cleaning Partners
+            Our Clients
           </h2>
           <p className="text-text-muted mt-3 mb-2 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
-            Fast and Fine Housemaid Cleaning Service is pleased to highlight our cleaning-service experience with the following premier office buildings and leading real estate businesses.
+            Fast and Fine Housemaid Cleaning Service is pleased to highlight our cleaning-service experience with our valued corporate office buildings and real estate clients.
           </p>
         </div>
 
@@ -95,16 +95,16 @@ export default function ClientExperience() {
                 </div>
                 <div>
                   <span className="text-[11px] font-extrabold text-green-primary uppercase tracking-widest block">
-                    Corporate Partnerships
+                    Corporate Clients
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-text-dark">
-                    Office Cleaning Partnership
+                    Office Cleaning Clients
                   </h3>
                 </div>
               </div>
 
               <p className="text-text-muted text-xs sm:text-sm mb-6 leading-relaxed">
-                Official cleaning partner for offices in <span className="font-bold text-text-dark">Sultan Real Estate</span>:
+                Official cleaning partner for client offices in <span className="font-bold text-text-dark">Sultan Real Estate</span>:
               </p>
 
               {/* Partners List */}
@@ -158,16 +158,16 @@ export default function ClientExperience() {
                 </div>
                 <div>
                   <span className="text-[11px] font-extrabold text-green-primary uppercase tracking-widest block">
-                    Real Estate &amp; Brokerage
+                    Real Estate Clients
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-text-dark">
-                    Move-In &amp; Move-Out Cleaning
+                    Move-In &amp; Move-Out Cleaning Clients
                   </h3>
                 </div>
               </div>
 
               <p className="text-text-muted text-xs sm:text-sm mb-6 leading-relaxed">
-                Move-in and move-out apartment cleaning services for the following <span className="font-bold text-text-dark">real estate brokers</span>:
+                Move-in and move-out apartment cleaning services for our <span className="font-bold text-text-dark">real estate brokerage clients</span>:
               </p>
 
               {/* Partners List */}

@@ -16,7 +16,7 @@ import Contact              from './components/Contact';
 import Footer               from './components/Footer';
 import FloatingWhatsApp     from './components/FloatingWhatsApp';
 
-const SECTION_IDS = ['home', 'about', 'services', 'gallery', 'experience', 'contact'];
+const SECTION_IDS = ['home', 'about', 'services', 'gallery', 'experience', 'contact', 'clients'];
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
