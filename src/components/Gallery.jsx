@@ -2,13 +2,13 @@ import useInView from '../hooks/useInView';
 
 const IMAGES = [
   {
-    src: '/gallery/photo-cleanroom.jpeg',
-    fallbackSrc: 'https://images.mintgram.live/fast%20and%20fine/photo-1669101602124-f5b78895d91c.jpeg',
-    label: 'Sterile Facility & Floor Sanitisation',
+    src: 'https://plus.unsplash.com/premium_photo-1663011218145-c1d0c3ba3542?w=1200&auto=format&fit=crop&q=80',
+    label: 'Professional Cleaning Staff',
   },
   {
-    src: 'https://plus.unsplash.com/premium_photo-1683141112334-d7d404f6e716?w=1200&auto=format&fit=crop&q=80',
-    label: 'Office & Workplace Care',
+    src: '/gallery/photo-cleanroom.jpeg',
+    fallbackSrc: 'https://images.mintgram.live/fast%20and%20fine/photo-1669101602124-f5b78895d91c.jpeg',
+    label: 'Sterile Facility & Office Care',
   },
   {
     src: 'https://images.unsplash.com/photo-1686178827149-6d55c72d81df?w=1200&auto=format&fit=crop&q=80',
@@ -72,10 +72,10 @@ export default function Gallery() {
         {/* 5-Image Showcase Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6">
           <div className="lg:col-span-2">
-            <GalleryItem src={IMAGES[0].src} fallbackSrc={IMAGES[0].fallbackSrc} label={IMAGES[0].label} delay={0} />
+            <GalleryItem src={IMAGES[0].src} label={IMAGES[0].label} delay={0} />
           </div>
           <div className="lg:col-span-2">
-            <GalleryItem src={IMAGES[1].src} label={IMAGES[1].label} delay={80} />
+            <GalleryItem src={IMAGES[1].src} fallbackSrc={IMAGES[1].fallbackSrc} label={IMAGES[1].label} delay={80} />
           </div>
           <div className="lg:col-span-2">
             <GalleryItem src={IMAGES[2].src} label={IMAGES[2].label} delay={160} />
