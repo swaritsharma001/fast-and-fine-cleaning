@@ -2,8 +2,9 @@ import useInView from '../hooks/useInView';
 
 const IMAGES = [
   {
-    src: 'https://plus.unsplash.com/premium_photo-1663011218145-c1d0c3ba3542?w=1200&auto=format&fit=crop&q=80',
-    label: 'Professional Cleaning Staff',
+    src: '/gallery/photo-cleanroom.jpeg',
+    fallbackSrc: 'https://images.mintgram.live/fast%20and%20fine/photo-1669101602124-f5b78895d91c.jpeg',
+    label: 'Sterile Facility & Floor Sanitisation',
   },
   {
     src: 'https://plus.unsplash.com/premium_photo-1683141112334-d7d404f6e716?w=1200&auto=format&fit=crop&q=80',
@@ -23,7 +24,7 @@ const IMAGES = [
   },
 ];
 
-function GalleryItem({ src, label, delay }) {
+function GalleryItem({ src, fallbackSrc, label, delay }) {
   const [ref, inView] = useInView();
 
   return (
@@ -41,6 +42,11 @@ function GalleryItem({ src, label, delay }) {
         alt={label}
         loading="lazy"
         className="w-full h-52 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+        onError={(e) => {
+          if (fallbackSrc && e.target.src !== fallbackSrc) {
+            e.target.src = fallbackSrc;
+          }
+        }}
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-green-primary/0 group-hover:bg-green-primary/70 transition-all duration-300 flex items-center justify-center p-4">
@@ -66,7 +72,7 @@ export default function Gallery() {
         {/* 5-Image Showcase Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6">
           <div className="lg:col-span-2">
-            <GalleryItem src={IMAGES[0].src} label={IMAGES[0].label} delay={0} />
+            <GalleryItem src={IMAGES[0].src} fallbackSrc={IMAGES[0].fallbackSrc} label={IMAGES[0].label} delay={0} />
           </div>
           <div className="lg:col-span-2">
             <GalleryItem src={IMAGES[1].src} label={IMAGES[1].label} delay={80} />
