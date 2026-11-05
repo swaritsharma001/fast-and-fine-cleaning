@@ -146,8 +146,21 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 text-center text-white/40 text-xs">
-          &copy; {new Date().getFullYear()} Fast &amp; Fine Housemaid Cleaning Services. Dubai &amp; Abu Dhabi, UAE. All rights reserved.
+        <div className="pt-8 text-center text-white/40 text-xs space-y-2">
+          <p>
+            &copy; {new Date().getFullYear()} Fast &amp; Fine Housemaid Cleaning Services. Dubai &amp; Abu Dhabi, UAE. All rights reserved.
+          </p>
+          <p className="text-white/60 text-xs">
+            Made and Managed by{' '}
+            <a
+              href="https://www.ujjwals.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-primary hover:text-white font-semibold transition-colors underline underline-offset-2"
+            >
+              Team NovaLabs
+            </a>
+          </p>
         </div>
       </div>
     </footer>
