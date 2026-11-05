@@ -7,6 +7,7 @@ import Services             from './components/Services';
 import WhyChooseUs          from './components/WhyChooseUs';
 import WorkProcess          from './components/WorkProcess';
 import Gallery              from './components/Gallery';
+import OurGallery           from './components/OurGallery';
 import QualityHygiene       from './components/QualityHygiene';
 import FlexibleArrangements from './components/FlexibleArrangements';
 import ClientExperience     from './components/ClientExperience';
@@ -15,7 +16,7 @@ import Contact              from './components/Contact';
 import Footer               from './components/Footer';
 import FloatingWhatsApp     from './components/FloatingWhatsApp';
 
-const SECTION_IDS = ['home', 'about', 'services', 'experience', 'contact'];
+const SECTION_IDS = ['home', 'about', 'services', 'gallery', 'experience', 'contact'];
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -54,6 +55,7 @@ export default function App() {
         <WhyChooseUs />
         <WorkProcess />
         <Gallery />
+        <OurGallery />
         <QualityHygiene />
         <FlexibleArrangements />
         <ClientExperience />

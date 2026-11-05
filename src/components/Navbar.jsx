@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'Home',           href: '#home' },
   { label: 'About Us',       href: '#about' },
   { label: 'Services',       href: '#services' },
-  { label: 'Our Experience', href: '#experience' },
+  { label: 'Gallery',        href: '#gallery' },
   { label: 'Why Choose Us',  href: '#experience' },
   { label: 'Contact',        href: '#contact' },
 ];
