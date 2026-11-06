@@ -23,7 +23,7 @@ Official modern, mobile-optimized responsive web application for **Fast & Fine H
 
 ## 📞 Contact Details
 - **Phone / WhatsApp:** [+971 52 831 3399](https://wa.me/971528313399)
-- **Email:** rajeena@fastandfineuae.com
+- **Email:** info@fastandfineuae.com
 - **Location:** Office 24, Bin Thani Residence, Al Qusais, Near to Al Twar Center, Dubai, UAE
 - **Google Maps:** [Fast & Fine on Google Maps](https://maps.app.goo.gl/f7yy8LMME6euBZa77?g_st=ac)
 - **Google Business Profile:** [Business Profile](https://share.google/E1MiZojIG3OOEI7a6)

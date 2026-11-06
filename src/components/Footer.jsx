@@ -112,9 +112,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:rajeena@fastandfineuae.com" className="flex items-start gap-2 text-white/60 text-xs sm:text-sm hover:text-green-primary transition-colors break-all">
+                <a href="mailto:info@fastandfineuae.com" className="flex items-start gap-2 text-white/60 text-xs sm:text-sm hover:text-green-primary transition-colors break-all">
                   <Mail size={15} className="mt-0.5 flex-shrink-0" />
-                  <span>rajeena@fastandfineuae.com</span>
+                  <span>info@fastandfineuae.com</span>
                 </a>
               </li>
               <li className="flex items-start gap-2 text-white/60 text-xs sm:text-sm">

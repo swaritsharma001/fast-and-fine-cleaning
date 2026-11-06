@@ -123,13 +123,13 @@ export default function Contact() {
               <div className="border-t border-gray-100" />
 
               {/* Email */}
-              <a href="mailto:rajeena@fastandfineuae.com" className="flex items-start gap-4 group">
+              <a href="mailto:info@fastandfineuae.com" className="flex items-start gap-4 group">
                 <div className="w-11 h-11 bg-green-light rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-primary transition-colors">
                   <Mail size={18} className="text-green-primary group-hover:text-white transition-colors" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-0.5">Email</p>
-                  <p className="font-bold text-text-dark text-xs sm:text-sm truncate">rajeena@fastandfineuae.com</p>
+                  <p className="font-bold text-text-dark text-xs sm:text-sm truncate">info@fastandfineuae.com</p>
                 </div>
               </a>
 
