@@ -68,12 +68,40 @@ const ALL_PHOTOS = [
     category: 'cleaning',
     description: 'Every assignment is reviewed before completion to ensure every corner meets Fast & Fine’s 13-year standard of excellence.',
   },
+  {
+    src: '/gallery/real-work-8.jpg',
+    fallbackSrc: 'https://images.mintgram.live/fast%20and%20fine/IMG-20261106-WA0008.jpg',
+    title: 'Luxury Suite Housekeeping',
+    subtitle: 'Five-Star Bed Making & Towel Styling',
+    badge: 'Housekeeping',
+    category: 'housekeeping',
+    description: 'Precision bed making with artistic towel swans and immaculate linen preparation for luxury apartments and suites in Dubai.',
+  },
+  {
+    src: '/gallery/real-work-9.jpg',
+    fallbackSrc: 'https://images.mintgram.live/fast%20and%20fine/IMG-20261106-WA0007.jpg',
+    title: 'Decorative Bed Presentation',
+    subtitle: 'Guest-Ready Bedroom Turn-Down Care',
+    badge: 'Turn-Down Care',
+    category: 'housekeeping',
+    description: 'Specialized bedroom turn-down service, pillow arrangement, and decorative styling ensuring an inviting atmosphere for clients.',
+  },
+  {
+    src: '/gallery/real-work-10.jpg',
+    fallbackSrc: 'https://images.mintgram.live/fast%20and%20fine/IMG-20261106-WA0006.jpg',
+    title: 'High-Rise Suite Servicing',
+    subtitle: 'Complete Master Suite Clean & Setup',
+    badge: 'Luxury Suite',
+    category: 'housekeeping',
+    description: 'Full residential suite housekeeping, carpet vacuuming, dust removal, and pristine presentation overlooking the Dubai skyline.',
+  },
 ];
 
 const FILTERS = [
-  { id: 'all', label: 'All Photos (7)' },
+  { id: 'all', label: 'All Photos (10)' },
   { id: 'staff', label: 'Our Staff' },
   { id: 'cleaning', label: 'On-Site Work' },
+  { id: 'housekeeping', label: 'Housekeeping' },
   { id: 'deep', label: 'Deep Cleaning' },
 ];
 

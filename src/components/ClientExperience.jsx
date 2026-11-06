@@ -51,7 +51,7 @@ const REAL_ESTATE_PARTNERS = [
 
 const TRUST_METRICS = [
   { value: '13+', label: 'Years of Experience' },
-  { value: '7+', label: 'Featured Clients' },
+  { value: '100+', label: 'Featured Clients' },
   { value: 'DXB', label: 'Dubai & UAE Based' },
   { value: '100%', label: 'Client-Focused Care' },
 ];
